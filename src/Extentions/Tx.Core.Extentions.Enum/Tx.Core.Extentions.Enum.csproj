@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net5.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">True</PublicSign>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
+
+	<Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
+		<Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
+	</Target>
+
+	<PropertyGroup>
+		<Authors>Angel Sola</Authors>
+		<Version>1.0.2.5</Version>
+		<AssemblyVersion>1.0.2.5</AssemblyVersion>
+		<FileVersion>1.0.2.5</FileVersion>
+		<RootNamespace>Tx.Core.Extentions.Enum</RootNamespace>
+		<AssemblyName>Tx.Core.Extentions.Enum</AssemblyName>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<Description>Extentions</Description>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+		<IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+	</PropertyGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<PropertyGroup>
+			<PackageName>$(OutputPath)$(PackageId).$(PackageVersion).nupkg</PackageName>
+		</PropertyGroup>
+		<!--<Exec Command="dotnet nuget push -s http://localhost:5000/v3/index.json $(PackageName)" />-->
+		<Message Text="FINISH to Build $(PackageName)" Importance="high" />
+	</Target>
+
+	<Target Name="AfterPublish" AfterTargets="Publish">
+		<Message Text="The name of the publish profile is $(DestinationAppRoot)" />
+		<Exec Command="DIR" />
+	</Target>
+
+	<Target Name="PostPublish" AfterTargets="AfterPublish">
+		<Exec Command="echo BEGIN After-publish&#xD;&#xA;&#xD;&#xA;PublishDir=$(PublishDir)&#xD;&#xA;PublishUrl=$(PublishUrl)&#xD;&#xA;&#xD;&#xA;echo END After-publish" />
+	</Target>
+
+
+	<Target Name="CustomActionsBeforePublish" BeforeTargets="BeforePublish">
+		<Message Text="Inside BeforePublish" Importance="high" />
+	</Target>
+
+
+
+</Project>

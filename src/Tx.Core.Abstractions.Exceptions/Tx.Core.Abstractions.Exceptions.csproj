@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net5.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">True</PublicSign>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>Angel Sola</Authors>
+		<Version>1.0.1.2</Version>
+		<AssemblyVersion>1.0.1.2</AssemblyVersion>
+		<FileVersion>1.0.1.2</FileVersion>
+		<RootNamespace>Tx.Core.Abstractions.Exceptions</RootNamespace>
+		<AssemblyName>Tx.Core.Abstractions.Exceptions</AssemblyName>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<Description>Abstractions</Description>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+		<IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+	</PropertyGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<PropertyGroup>
+			<PackageName>$(OutputPath)$(PackageId).$(PackageVersion).nupkg</PackageName>
+		</PropertyGroup>
+		<!--<Exec Command="dotnet nuget push -s http://localhost:5000/v3/index.json $(PackageName)" />-->
+		<Message Text="FINISH to Build $(PackageName)" Importance="high" />
+	</Target>
+
+	<ItemGroup>
+	  <Compile Remove="Common\DefaultableDictionary.cs" />
+	</ItemGroup>
+
+	<!--Common references-->
+
+	<!--.net5.0 references-->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0' ">
+		<!--<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />-->
+	</ItemGroup>
+
+	<!--netstandard2.1 references-->
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1' ">
+		<!--<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.10" />-->
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+
+</Project>

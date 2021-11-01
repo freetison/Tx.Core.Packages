@@ -1,0 +1,81 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "57630d6d-9bdf-4317-9f78-5840079ef2fe": {
+      "ProjectGuid": "57630d6d-9bdf-4317-9f78-5840079ef2fe",
+      "DisplayName": "Mgft.Core.Cache",
+      "ColorIndex": 0
+    },
+    "76ddd692-8793-4ece-ac7b-54208ed8f0e1": {
+      "ProjectGuid": "76ddd692-8793-4ece-ac7b-54208ed8f0e1",
+      "DisplayName": "Tx.Core.Abstractions.Common",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "8a6d94ef-9be9-45f5-8772-93de44f5bcc3": {
+      "ProjectGuid": "8a6d94ef-9be9-45f5-8772-93de44f5bcc3",
+      "DisplayName": "Tx.Core.GenericStrategy",
+      "ColorIndex": 2
+    },
+    "db46b190-8cc7-463f-a9c7-b5e435e7bbff": {
+      "ProjectGuid": "db46b190-8cc7-463f-a9c7-b5e435e7bbff",
+      "DisplayName": "Tx.Core.Abstractions.Exceptions",
+      "ColorIndex": 3
+    },
+    "ac08d764-7706-4eb0-91d3-08111cae5f3d": {
+      "ProjectGuid": "ac08d764-7706-4eb0-91d3-08111cae5f3d",
+      "DisplayName": "src",
+      "ColorIndex": 4
+    },
+    "1fc3eed3-5141-44e1-acf6-572cf70d7d74": {
+      "ProjectGuid": "1fc3eed3-5141-44e1-acf6-572cf70d7d74",
+      "DisplayName": "Tx.Core.GenericRules",
+      "ColorIndex": 5
+    },
+    "d041a396-5345-48ea-a1f0-09dcc866efaa": {
+      "ProjectGuid": "d041a396-5345-48ea-a1f0-09dcc866efaa",
+      "DisplayName": "Mgft.Core.GenericRepository",
+      "ColorIndex": 6
+    },
+    "84e20bc0-c5b6-473d-8625-9eb20ef22d93": {
+      "ProjectGuid": "84e20bc0-c5b6-473d-8625-9eb20ef22d93",
+      "DisplayName": "Mgft.Core.Entity",
+      "ColorIndex": 7
+    },
+    "9137618b-389d-430f-9701-59900480c8c0": {
+      "ProjectGuid": "9137618b-389d-430f-9701-59900480c8c0",
+      "DisplayName": "Mgft.Core.Common.DI.Services",
+      "ColorIndex": 8
+    },
+    "d444b8c1-e21f-4509-b106-e1aac2452222": {
+      "ProjectGuid": "d444b8c1-e21f-4509-b106-e1aac2452222",
+      "DisplayName": "Mgft.Core.ApiController",
+      "ColorIndex": 9
+    },
+    "000acdd6-f58f-4b63-bec6-e2e2f48a0ed5": {
+      "ProjectGuid": "000acdd6-f58f-4b63-bec6-e2e2f48a0ed5",
+      "DisplayName": "Tx.Core.Extentions",
+      "ColorIndex": 10
+    },
+    "85a2f138-ecdc-4753-ba2c-8e1ac381673d": {
+      "ProjectGuid": "85a2f138-ecdc-4753-ba2c-8e1ac381673d",
+      "DisplayName": "Tx.Core.GenericFactory",
+      "ColorIndex": 11
+    },
+    "70a6c14e-27ba-4061-bedd-a6e0dd85a447": {
+      "ProjectGuid": "70a6c14e-27ba-4061-bedd-a6e0dd85a447",
+      "DisplayName": "Tx.Core.Extentions.Assembly",
+      "ColorIndex": 12
+    },
+    "cb54b910-127b-4031-a163-b882d6e61f6f": {
+      "ProjectGuid": "cb54b910-127b-4031-a163-b882d6e61f6f",
+      "DisplayName": "Tx.Core.Extentions.DateTime",
+      "ColorIndex": 13
+    }
+  },
+  "NextColorIndex": 14
+}
