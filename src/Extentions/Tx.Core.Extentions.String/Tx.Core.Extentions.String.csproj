@@ -17,9 +17,10 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.2.1.5</Version>
-		<AssemblyVersion>1.2.1.5</AssemblyVersion>
-		<FileVersion>1.2.1.5</FileVersion>
+		<Version>1.2.1.6</Version>
+    <Company>Tx</Company>
+    <AssemblyVersion>1.2.1.6</AssemblyVersion>
+		<FileVersion>1.2.1.6</FileVersion>
 		<RootNamespace>Tx.Core.Extentions.String</RootNamespace>
 		<AssemblyName>Tx.Core.Extentions.String</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>

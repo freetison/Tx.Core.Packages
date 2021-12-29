@@ -7,14 +7,21 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using NewtonsoftSerializer = Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Tx.Core.Extentions.String
 {
-    using NewtonsoftSerializer = Newtonsoft.Json;
-    using JsonSerializer = System.Text.Json.JsonSerializer;
 
     public static class StringEx
     {
+        private static readonly NewtonsoftSerializer.JsonSerializerSettings JsonSerializerSettings = new NewtonsoftSerializer.JsonSerializerSettings
+        {
+            ReferenceLoopHandling = NewtonsoftSerializer.ReferenceLoopHandling.Ignore,
+            StringEscapeHandling = NewtonsoftSerializer.StringEscapeHandling.EscapeHtml,
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
+        };
+
         public static bool IsNumeric(this string str) => str.All(char.IsDigit);
 
         public static string ToHex(this string str) => !str.IsNumeric() ? null : $"{str:X8}";
@@ -60,19 +67,21 @@ namespace Tx.Core.Extentions.String
             catch { return default; }
         }
 
-       public static string ToJson(this object value)
-       {
-            if (value == null) { return System.String.Empty; }
-
-            try { return JsonSerializer.Serialize(value); }
-            catch (Exception) { return System.String.Empty; }
+        public static string ToJson(this object value)
+        {
+            if (value == null) { return null; }
+            try { return NewtonsoftSerializer.JsonConvert.SerializeObject(value); }
+            catch { return null; }
         }
 
         // using Newtonsoft
         public static string ToJson(this object value, NewtonsoftSerializer.JsonSerializerSettings settings)
         {
             if (value == null) { return null; }
-            try { return NewtonsoftSerializer.JsonConvert.SerializeObject(value, settings); }
+
+            NewtonsoftSerializer.JsonSerializerSettings opSettings = settings ?? JsonSerializerSettings;
+
+            try { return NewtonsoftSerializer.JsonConvert.SerializeObject(value, opSettings); }
             catch { return null; }
         }
 

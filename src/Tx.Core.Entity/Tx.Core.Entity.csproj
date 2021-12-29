@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
 	<PropertyGroup>
 		<TargetFrameworks>net5.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
@@ -11,20 +12,18 @@
 		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 
-	<Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
-		<Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
-	</Target>
-
 	<PropertyGroup>
-    <Authors>Angel Sola</Authors>
-    <Version>1.0.1.0</Version>
-    <Company>Tx</Company>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <RootNamespace>Tx.Core.Extentions.DateTime</RootNamespace>
-    <AssemblyName>Tx.Core.Extentions.DateTime</AssemblyName>
+		<Authors>Angel Sola</Authors>
+		<Company>Tx</Company>
+		<Version>1.0.0.0</Version>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<RootNamespace>Tx.Core.Entity</RootNamespace>
+		<AssemblyName>Tx.Core.Entity</AssemblyName>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<Description>Entity</Description>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Description>Extentions</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
@@ -45,20 +44,18 @@
 		<Message Text="FINISH to Build $(PackageName)" Importance="high" />
 	</Target>
 
-	<Target Name="AfterPublish" AfterTargets="Publish">
-		<Message Text="The name of the publish profile is $(DestinationAppRoot)" />
-		<Exec Command="DIR" />
-	</Target>
+	<!--Common references-->
+	<ItemGroup>
+	</ItemGroup>
 
-	<Target Name="PostPublish" AfterTargets="AfterPublish">
-		<Exec Command="echo BEGIN After-publish&#xD;&#xA;&#xD;&#xA;PublishDir=$(PublishDir)&#xD;&#xA;PublishUrl=$(PublishUrl)&#xD;&#xA;&#xD;&#xA;echo END After-publish" />
-	</Target>
+	<!--.net5.0 references-->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0' ">
+		<!--<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0" />-->
+	</ItemGroup>
 
-
-	<Target Name="CustomActionsBeforePublish" BeforeTargets="BeforePublish">
-		<Message Text="Inside BeforePublish" Importance="high" />
-	</Target>
-
-
+	<!--netstandard2.1 references-->
+	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1' ">
+		<!--<PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="3.1.10" />-->
+	</ItemGroup>
 
 </Project>

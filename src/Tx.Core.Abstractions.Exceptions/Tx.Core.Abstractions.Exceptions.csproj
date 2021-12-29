@@ -15,7 +15,8 @@
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
 		<Version>1.0.1.2</Version>
-		<AssemblyVersion>1.0.1.2</AssemblyVersion>
+    <Company>Tx</Company>
+    <AssemblyVersion>1.0.1.2</AssemblyVersion>
 		<FileVersion>1.0.1.2</FileVersion>
 		<RootNamespace>Tx.Core.Abstractions.Exceptions</RootNamespace>
 		<AssemblyName>Tx.Core.Abstractions.Exceptions</AssemblyName>

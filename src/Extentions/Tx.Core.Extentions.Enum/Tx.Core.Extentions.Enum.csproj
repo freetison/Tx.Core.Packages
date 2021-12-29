@@ -18,7 +18,8 @@
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
 		<Version>1.0.2.5</Version>
-		<AssemblyVersion>1.0.2.5</AssemblyVersion>
+    <Company>Tx</Company>
+    <AssemblyVersion>1.0.2.5</AssemblyVersion>
 		<FileVersion>1.0.2.5</FileVersion>
 		<RootNamespace>Tx.Core.Extentions.Enum</RootNamespace>
 		<AssemblyName>Tx.Core.Extentions.Enum</AssemblyName>
