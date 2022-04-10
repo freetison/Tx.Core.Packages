@@ -14,14 +14,14 @@ namespace Tx.Core.Extensions.DateTime
 
         public static bool IsBetween(this System.DateTime dt, System.DateTime start, System.DateTime end) => dt >= start && dt <= end;
 
-        public static System.DateTime UnixTimestampToDateTime(double unixTime)
+        public static System.DateTime ToDateTime(this double unixTime)
         {
             System.DateTime unixStart = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
             return new System.DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
         }
 
-        public static double DateTimeToUnixTimestamp(System.DateTime dateTime)
+        public static double ToUnixTimestamp(this System.DateTime dateTime)
         {
             System.DateTime unixStart = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
             long unixTimeStampInTicks = (dateTime.ToUniversalTime() - unixStart).Ticks;

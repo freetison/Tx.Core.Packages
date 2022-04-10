@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Linq;
 using System.Text;
@@ -10,7 +9,7 @@ using Newtonsoft.Json.Serialization;
 using NewtonsoftSerializer = Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace Tx.Core.Extentions.String
+namespace Tx.Core.Extensions.String
 {
 
     public static class StringEx
@@ -39,6 +38,8 @@ namespace Tx.Core.Extentions.String
         public static string CopyUntil(this string str, int start, int len) => str.Substring(start, len);
 
         public static decimal ToDecimal(this string str, int decimales) => decimal.Round(Convert.ToDecimal(str), decimales);
+
+        public static double ToDouble(this string input, double defaultValue) => double.TryParse(input, out var value) ? value : defaultValue;
 
         public static bool ToBoolean(this string str)
         {
