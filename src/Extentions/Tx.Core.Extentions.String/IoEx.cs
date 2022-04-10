@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Tx.Core.Extentions.String;
 
 namespace Tx.Core.Extensions.String
 {
