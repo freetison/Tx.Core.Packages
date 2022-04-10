@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Tx.Core.Extentions.Dictionary
+namespace Tx.Core.Extensions.Dictionary
 {
     public static class DictionaryEx
     {

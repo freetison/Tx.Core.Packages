@@ -1,14 +1,12 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 
-namespace Tx.Core.Extentions.String
+namespace Tx.Core.Extensions.String
 {
     using NewtonsoftSerializer = Newtonsoft.Json;
     using JsonSerializer = System.Text.Json.JsonSerializer;

@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net5.0; net6.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">True</PublicSign>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Angel Sola</Authors>
+    <Company>Tx</Company>
+    <Version>1.0.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <RootNamespace>Tx.Core.Azure.ServiceBus</RootNamespace>
+    <AssemblyName>Tx.Core.Azure.ServiceBus</AssemblyName>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Description>Azure Service Bus Implementation</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
+    <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+    <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <PropertyGroup>
+      <PackageName>$(OutputPath)$(PackageId).$(PackageVersion).nupkg</PackageName>
+    </PropertyGroup>
+    <!--<Exec Command="dotnet nuget push -s http://localhost:5000/v3/index.json $(PackageName)" />-->
+    <Message Text="FINISH to Build $(PackageName)" Importance="high" />
+  </Target>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <!--.net5.0 references-->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net5.0' ">
+  </ItemGroup>
+
+  <!--.net6.0 references-->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' ">
+  </ItemGroup>
+</Project>

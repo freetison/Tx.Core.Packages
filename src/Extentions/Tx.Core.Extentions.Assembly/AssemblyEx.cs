@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Tx.Core.Extentions.Assembly
+namespace Tx.Core.Extensions.Assembly
 {
     public static class AssemblyEx
     {

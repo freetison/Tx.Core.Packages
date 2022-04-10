@@ -6,7 +6,7 @@
     {
         public virtual string ExceptionType { get; } = "GeneralException";
 
-        public virtual bool isPublic { get; } = false;
+        public virtual bool IsPublic { get; } = false;
 
         protected CustomException() : base() { }
 

@@ -75,7 +75,17 @@
       "ProjectGuid": "cb54b910-127b-4031-a163-b882d6e61f6f",
       "DisplayName": "Tx.Core.Extentions.DateTime",
       "ColorIndex": 13
+    },
+    "2f30380d-12dd-4100-9035-7847aaae6463": {
+      "ProjectGuid": "2f30380d-12dd-4100-9035-7847aaae6463",
+      "DisplayName": "Tx.Core.DbContextFactory",
+      "ColorIndex": 14
+    },
+    "be33d092-e579-42fe-9811-6cf2ab8f19dc": {
+      "ProjectGuid": "be33d092-e579-42fe-9811-6cf2ab8f19dc",
+      "DisplayName": "Tx.Core.Extentions.String",
+      "ColorIndex": 15
     }
   },
-  "NextColorIndex": 14
+  "NextColorIndex": 0
 }
