@@ -17,10 +17,10 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.2.1.7</Version>
+		<Version>1.2.1.8</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.2.1.7</AssemblyVersion>
-		<FileVersion>1.2.1.7</FileVersion>
+    <AssemblyVersion>1.2.1.8</AssemblyVersion>
+		<FileVersion>1.2.1.8</FileVersion>
 		<RootNamespace>Tx.Core.Extensions.String</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.String</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>

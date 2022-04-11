@@ -14,6 +14,8 @@ namespace Tx.Core.Extensions.DateTime
 
         public static bool IsBetween(this System.DateTime dt, System.DateTime start, System.DateTime end) => dt >= start && dt <= end;
 
+        public static bool IsBetween(this System.DateTimeOffset dt, System.DateTimeOffset start, System.DateTimeOffset end) => dt >= start && dt <= end;
+
         public static System.DateTime ToDateTime(this double unixTime)
         {
             System.DateTime unixStart = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);

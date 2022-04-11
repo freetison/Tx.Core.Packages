@@ -40,6 +40,7 @@ namespace Tx.Core.Extensions.String
         public static decimal ToDecimal(this string str, int decimales) => decimal.Round(Convert.ToDecimal(str), decimales);
 
         public static double ToDouble(this string input, double defaultValue) => double.TryParse(input, out var value) ? value : defaultValue;
+        public static long ToLong(this string input, long defaultValue) => long.TryParse(input, out var value) ? value : defaultValue;
 
         public static bool ToBoolean(this string str)
         {
