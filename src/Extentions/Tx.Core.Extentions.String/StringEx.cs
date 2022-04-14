@@ -39,8 +39,8 @@ namespace Tx.Core.Extensions.String
 
         public static decimal ToDecimal(this string str, int decimales) => decimal.Round(Convert.ToDecimal(str), decimales);
 
-        public static double ToDouble(this string input, double defaultValue) => double.TryParse(input, out var value) ? value : defaultValue;
-        public static long ToLong(this string input, long defaultValue) => long.TryParse(input, out var value) ? value : defaultValue;
+        public static double ToDouble(this string input, double defaultValue = default) => double.TryParse(input, out var value) ? value : defaultValue;
+        public static long ToLong(this string input, long defaultValue = default) => long.TryParse(input, out var value) ? value : defaultValue;
 
         public static bool ToBoolean(this string str)
         {
@@ -151,7 +151,7 @@ namespace Tx.Core.Extensions.String
         public static int WordsCount(this string input) => Regex.Matches(input, @"[^\s]+").Count;
         public static string Replace(this string input, string word, string with, RegexOptions caseOption) => Regex.Replace(input, word, with, caseOption);
         public static int TryParse(this string input, int defaultValue) => int.TryParse(input, out var value) ? value : defaultValue;
-        public static int ToInt(this string input, int defaultValue) => int.TryParse(input, out var value) ? value : defaultValue;
+        public static int ToInt(this string input, int defaultValue = default) => int.TryParse(input, out var value) ? value : defaultValue;
         public static int CleanAsInt(this string input, int defaultValue)
         {
             var strNumber = string.Concat(input.Where(char.IsDigit));
