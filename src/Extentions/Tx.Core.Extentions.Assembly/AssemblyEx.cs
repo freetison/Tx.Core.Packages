@@ -13,7 +13,7 @@ namespace Tx.Core.Extensions.Assembly
             return Path.GetDirectoryName(filePath);
         }
 
-        public static List<Type> GetAllIEntityTypeConfigurationAssebliesByNamespaceContains(string @namespace)
+        public static List<Type> GetAllIEntityTypeConfigurationAssembliesByNamespaceContains(string @namespace)
         {
             if (string.IsNullOrEmpty(@namespace)) return new List<Type>();
 
@@ -27,7 +27,7 @@ namespace Tx.Core.Extensions.Assembly
                 .ToList();
         }
 
-        public static List<Type> GetAllAssebliesByInterface<T>()
+        public static List<Type> GetAllAssembliesByInterface<T>()
         {
             if (!typeof(T).IsInterface) return new List<Type>();
 
@@ -36,7 +36,7 @@ namespace Tx.Core.Extensions.Assembly
                 .ToList();
         }
 
-        public static List<Type> GetAllIEntityTypeConfigurationAssebliesInterface<T>()
+        public static List<Type> GetAllIEntityTypeConfigurationAssembliesInterface<T>()
         {
             if (!typeof(T).IsInterface) return new List<Type>();
 
@@ -85,6 +85,8 @@ namespace Tx.Core.Extensions.Assembly
             }
             return ret;
         }
+
+        public static T GetPropertyValue<T>(object obj, string propName) => (T)obj.GetType().GetProperty(propName)?.GetValue(obj, null);
     }
 
 }
