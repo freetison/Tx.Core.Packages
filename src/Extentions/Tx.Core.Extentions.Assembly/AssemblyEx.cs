@@ -86,7 +86,7 @@ namespace Tx.Core.Extensions.Assembly
             return ret;
         }
 
-        public static T GetPropertyValue<T>(object obj, string propName) => (T)obj.GetType().GetProperty(propName)?.GetValue(obj, null);
+        public static T GetPropertyValue<T>(this object obj, string propName) => (T)obj.GetType().GetProperty(propName)?.GetValue(obj, null);
     }
 
 }

@@ -18,7 +18,6 @@ namespace Tx.Core.Azure.ServiceBus.Topic
         public async Task SendAsync(Message message, Dictionary<string, object> properties)
         {
             message = AddProperties(message, properties);
-
             await _client.SendAsync(message);
         }
 
