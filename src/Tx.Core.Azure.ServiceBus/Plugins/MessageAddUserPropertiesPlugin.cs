@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.ServiceBus.Core;
 
+
 namespace Tx.Core.Azure.ServiceBus.Plugins;
 
 public class MessageAddUserPropertiesPlugin : ServiceBusPlugin

@@ -14,9 +14,9 @@
   <PropertyGroup>
     <Authors>Angel Sola</Authors>
     <Company>Tx</Company>
-    <Version>1.0.1.0</Version>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.3.0</Version>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+    <FileVersion>1.0.3.0</FileVersion>
     <RootNamespace>Tx.Core.Azure.ServiceBus</RootNamespace>
     <AssemblyName>Tx.Core.Azure.ServiceBus</AssemblyName>
     <PackageReleaseNotes></PackageReleaseNotes>
@@ -49,11 +49,21 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
-  <!--.net5.0 references-->
+  <!--.net5.0 references--><!--
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0' ">
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
-  <!--.net6.0 references-->
+  --><!--.net6.0 references--><!--
   <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' ">
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
   </ItemGroup>
+
+  --><!--.net7.0 references--><!--
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0' ">
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+  </ItemGroup>-->
 </Project>
