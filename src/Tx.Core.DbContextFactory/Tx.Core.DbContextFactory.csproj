@@ -15,9 +15,9 @@
   <PropertyGroup>
 		<Authors>Angel Sola</Authors>
     <Company>Tx</Company>
-    <Version>1.0.0.2</Version>
-		<AssemblyVersion>1.0.0.2</AssemblyVersion>
-		<FileVersion>1.0.0.2</FileVersion>
+    <Version>1.0.0.3</Version>
+		<AssemblyVersion>1.0.0.3</AssemblyVersion>
+		<FileVersion>1.0.0.3</FileVersion>
 		<RootNamespace>Tx.Core.DbContextFactory</RootNamespace>
 		<AssemblyName>Tx.Core.DbContextFactory</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>

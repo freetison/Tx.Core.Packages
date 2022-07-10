@@ -10,4 +10,6 @@ namespace Tx.Core.DbContextFactory
 
         DbContext Create(DbContextOptions<DbContext> options);
     }
+
+
 }
