@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Tx.Core.Extentions.Dictionary
+namespace Tx.Core.Extensions.Dictionary
 {
     public class DefaultableDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {

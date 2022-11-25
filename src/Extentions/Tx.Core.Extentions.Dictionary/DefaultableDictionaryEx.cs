@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Tx.Core.Extentions.Dictionary
+namespace Tx.Core.Extensions.Dictionary
 {
     public static class DefaultableDictionaryEx
     {

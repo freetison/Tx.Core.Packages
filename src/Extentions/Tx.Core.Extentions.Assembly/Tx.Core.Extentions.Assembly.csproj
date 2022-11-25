@@ -17,14 +17,14 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.0.1.0</Version>
+		<Version>1.0.3.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-		<FileVersion>1.0.1.0</FileVersion>
-		<RootNamespace>Tx.Core.Extentions.Assembly</RootNamespace>
-		<AssemblyName>Tx.Core.Extentions.Assembly</AssemblyName>
+    <AssemblyVersion>1.0.3.0</AssemblyVersion>
+		<FileVersion>1.0.3.0</FileVersion>
+		<RootNamespace>Tx.Core.Extensions.Assembly</RootNamespace>
+		<AssemblyName>Tx.Core.Extensions.Assembly</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>
-		<Description>Extentions</Description>
+		<Description>Extensions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>

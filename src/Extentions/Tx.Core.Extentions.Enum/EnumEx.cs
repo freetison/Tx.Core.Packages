@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace Tx.Core.Extentions.Enum
+namespace Tx.Core.Extensions.Enum
 {
     public static class EnumEx
     {

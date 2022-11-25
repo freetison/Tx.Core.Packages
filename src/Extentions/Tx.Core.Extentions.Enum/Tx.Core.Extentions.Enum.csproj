@@ -17,14 +17,14 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.0.2.5</Version>
+		<Version>1.0.2.7</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.0.2.5</AssemblyVersion>
-		<FileVersion>1.0.2.5</FileVersion>
-		<RootNamespace>Tx.Core.Extentions.Enum</RootNamespace>
-		<AssemblyName>Tx.Core.Extentions.Enum</AssemblyName>
+    <AssemblyVersion>1.0.2.7</AssemblyVersion>
+		<FileVersion>1.0.2.7</FileVersion>
+		<RootNamespace>Tx.Core.Extensions.Enum</RootNamespace>
+		<AssemblyName>Tx.Core.Extensions.Enum</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>
-		<Description>Extentions</Description>
+		<Description>Extensions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>

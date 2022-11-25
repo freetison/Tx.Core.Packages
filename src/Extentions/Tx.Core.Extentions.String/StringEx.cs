@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Linq;
 using System.Text;
@@ -7,14 +6,21 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using NewtonsoftSerializer = Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace Tx.Core.Extentions.String
+namespace Tx.Core.Extensions.String
 {
-    using NewtonsoftSerializer = Newtonsoft.Json;
-    using JsonSerializer = System.Text.Json.JsonSerializer;
 
     public static class StringEx
     {
+        private static readonly NewtonsoftSerializer.JsonSerializerSettings JsonSerializerSettings = new NewtonsoftSerializer.JsonSerializerSettings
+        {
+            ReferenceLoopHandling = NewtonsoftSerializer.ReferenceLoopHandling.Ignore,
+            StringEscapeHandling = NewtonsoftSerializer.StringEscapeHandling.EscapeHtml,
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
+        };
+
         public static bool IsNumeric(this string str) => str.All(char.IsDigit);
 
         public static string ToHex(this string str) => !str.IsNumeric() ? null : $"{str:X8}";
@@ -32,6 +38,9 @@ namespace Tx.Core.Extentions.String
         public static string CopyUntil(this string str, int start, int len) => str.Substring(start, len);
 
         public static decimal ToDecimal(this string str, int decimales) => decimal.Round(Convert.ToDecimal(str), decimales);
+
+        public static double ToDouble(this string input, double defaultValue = default) => double.TryParse(input, out var value) ? value : defaultValue;
+        public static long ToLong(this string input, long defaultValue = default) => long.TryParse(input, out var value) ? value : defaultValue;
 
         public static bool ToBoolean(this string str)
         {
@@ -60,19 +69,21 @@ namespace Tx.Core.Extentions.String
             catch { return default; }
         }
 
-       public static string ToJson(this object value)
-       {
-            if (value == null) { return System.String.Empty; }
-
-            try { return JsonSerializer.Serialize(value); }
-            catch (Exception) { return System.String.Empty; }
+        public static string ToJson(this object value)
+        {
+            if (value == null) { return null; }
+            try { return NewtonsoftSerializer.JsonConvert.SerializeObject(value); }
+            catch { return null; }
         }
 
         // using Newtonsoft
         public static string ToJson(this object value, NewtonsoftSerializer.JsonSerializerSettings settings)
         {
             if (value == null) { return null; }
-            try { return NewtonsoftSerializer.JsonConvert.SerializeObject(value, settings); }
+
+            NewtonsoftSerializer.JsonSerializerSettings opSettings = settings ?? JsonSerializerSettings;
+
+            try { return NewtonsoftSerializer.JsonConvert.SerializeObject(value, opSettings); }
             catch { return null; }
         }
 
@@ -140,7 +151,7 @@ namespace Tx.Core.Extentions.String
         public static int WordsCount(this string input) => Regex.Matches(input, @"[^\s]+").Count;
         public static string Replace(this string input, string word, string with, RegexOptions caseOption) => Regex.Replace(input, word, with, caseOption);
         public static int TryParse(this string input, int defaultValue) => int.TryParse(input, out var value) ? value : defaultValue;
-        public static int ToInt(this string input, int defaultValue) => int.TryParse(input, out var value) ? value : defaultValue;
+        public static int ToInt(this string input, int defaultValue = default) => int.TryParse(input, out var value) ? value : defaultValue;
         public static int CleanAsInt(this string input, int defaultValue)
         {
             var strNumber = string.Concat(input.Where(char.IsDigit));

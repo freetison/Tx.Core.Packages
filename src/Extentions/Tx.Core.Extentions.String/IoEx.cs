@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Tx.Core.Extentions.String
+namespace Tx.Core.Extensions.String
 {
     public static class IoEx
     {
