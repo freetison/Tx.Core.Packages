@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Authors>Angel Sola</Authors>
+    <Company>Tx</Company>
     <Version>1.0.0</Version>
     <AssemblyName>Tx.Core.GenericStrategy</AssemblyName>
     <Description>Generic strategy with factoy includes</Description>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AC08D764-7706-4EB0-91D3-08111CAE5F3D}"
 EndProject
@@ -28,6 +28,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Extentions.Enum", "src\Extentions\Tx.Core.Extentions.Enum\Tx.Core.Extentions.Enum.csproj", "{4732AD2D-680D-48AE-8363-581D0D9B5354}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Extentions.String", "src\Extentions\Tx.Core.Extentions.String\Tx.Core.Extentions.String.csproj", "{BE33D092-E579-42FE-9811-6CF2AB8F19DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Entity", "src\Tx.Core.Entity\Tx.Core.Entity.csproj", "{6C217C74-9A3F-43CD-ACE6-0C534B2F7A26}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.DbContextFactory", "src\Tx.Core.DbContextFactory\Tx.Core.DbContextFactory.csproj", "{2F30380D-12DD-4100-9035-7847AAAE6463}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{BE33D092-E579-42FE-9811-6CF2AB8F19DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE33D092-E579-42FE-9811-6CF2AB8F19DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE33D092-E579-42FE-9811-6CF2AB8F19DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C217C74-9A3F-43CD-ACE6-0C534B2F7A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C217C74-9A3F-43CD-ACE6-0C534B2F7A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C217C74-9A3F-43CD-ACE6-0C534B2F7A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C217C74-9A3F-43CD-ACE6-0C534B2F7A26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F30380D-12DD-4100-9035-7847AAAE6463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F30380D-12DD-4100-9035-7847AAAE6463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F30380D-12DD-4100-9035-7847AAAE6463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F30380D-12DD-4100-9035-7847AAAE6463}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +103,8 @@ Global
 		{D65C9703-5BFE-4821-B722-54C865B16D7A} = {34C2C4D7-1876-4517-AC4F-DB30450577AC}
 		{4732AD2D-680D-48AE-8363-581D0D9B5354} = {34C2C4D7-1876-4517-AC4F-DB30450577AC}
 		{BE33D092-E579-42FE-9811-6CF2AB8F19DC} = {34C2C4D7-1876-4517-AC4F-DB30450577AC}
+		{6C217C74-9A3F-43CD-ACE6-0C534B2F7A26} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
+		{2F30380D-12DD-4100-9035-7847AAAE6463} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFD5BD38-80D6-4BA6-80D9-194AE7FECEDD}
