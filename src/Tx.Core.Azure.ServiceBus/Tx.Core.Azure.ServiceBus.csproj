@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net5.0; net6.0</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -14,9 +14,9 @@
   <PropertyGroup>
     <Authors>Angel Sola</Authors>
     <Company>Tx</Company>
-    <Version>1.0.3.0</Version>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
+    <Version>1.0.4.0</Version>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
     <RootNamespace>Tx.Core.Azure.ServiceBus</RootNamespace>
     <AssemblyName>Tx.Core.Azure.ServiceBus</AssemblyName>
     <PackageReleaseNotes></PackageReleaseNotes>

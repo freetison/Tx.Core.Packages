@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0</TargetFrameworks>
+		<TargetFrameworks>net6.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -14,14 +14,14 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.0.1.2</Version>
+		<Version>1.0.2.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.0.1.2</AssemblyVersion>
-		<FileVersion>1.0.1.2</FileVersion>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+		<FileVersion>1.0.2.0</FileVersion>
 		<RootNamespace>Tx.Core.Abstractions.Exceptions</RootNamespace>
 		<AssemblyName>Tx.Core.Abstractions.Exceptions</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>
-		<Description>Abstractions</Description>
+		<Description>Exceptions Abstractions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>

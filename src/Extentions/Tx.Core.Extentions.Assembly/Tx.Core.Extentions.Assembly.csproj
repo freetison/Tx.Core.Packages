@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net5.0</TargetFrameworks>
+		<TargetFrameworks>net6.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -17,14 +17,14 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.0.3.0</Version>
+		<Version>1.0.4.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-		<FileVersion>1.0.3.0</FileVersion>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+		<FileVersion>1.0.4.0</FileVersion>
 		<RootNamespace>Tx.Core.Extensions.Assembly</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.Assembly</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>
-		<Description>Extensions</Description>
+		<Description>Assembly Extensions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>

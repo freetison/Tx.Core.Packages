@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.1.32328.378
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AC08D764-7706-4EB0-91D3-08111CAE5F3D}"
 EndProject
@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.GenericStrategy", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Abstractions.Exceptions", "src\Tx.Core.Abstractions.Exceptions\Tx.Core.Abstractions.Exceptions.csproj", "{DB46B190-8CC7-463F-A9C7-B5E435E7BBFF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{34C2C4D7-1876-4517-AC4F-DB30450577AC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extentions", "Extentions", "{34C2C4D7-1876-4517-AC4F-DB30450577AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Extentions.Assembly", "src\Extentions\Tx.Core.Extentions.Assembly\Tx.Core.Extentions.Assembly.csproj", "{70A6C14E-27BA-4061-BEDD-A6E0DD85A447}"
 EndProject
@@ -33,12 +33,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Entity", "src\Tx.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.DbContextFactory", "src\Tx.Core.DbContextFactory\Tx.Core.DbContextFactory.csproj", "{2F30380D-12DD-4100-9035-7847AAAE6463}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Azure.ServiceBus", "src\Tx.Core.Azure.ServiceBus\Tx.Core.Azure.ServiceBus.csproj", "{79BB0F8A-8DEA-42EB-B511-AD30674CB895}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{217C58F1-2248-4E2F-9D66-CA0BCC52DF28}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B18A56D2-51F7-492F-B211-85A354A12078}"
 	ProjectSection(SolutionItems) = preProject
 		Readme.rd = Readme.rd
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Azure.ServiceBus", "src\Tx.Core.Azure.ServiceBus\Tx.Core.Azure.ServiceBus.csproj", "{E70B5AD3-AD74-480A-811E-AA8300A2454F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,10 +94,10 @@ Global
 		{2F30380D-12DD-4100-9035-7847AAAE6463}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F30380D-12DD-4100-9035-7847AAAE6463}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F30380D-12DD-4100-9035-7847AAAE6463}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79BB0F8A-8DEA-42EB-B511-AD30674CB895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79BB0F8A-8DEA-42EB-B511-AD30674CB895}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79BB0F8A-8DEA-42EB-B511-AD30674CB895}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79BB0F8A-8DEA-42EB-B511-AD30674CB895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E70B5AD3-AD74-480A-811E-AA8300A2454F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E70B5AD3-AD74-480A-811E-AA8300A2454F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E70B5AD3-AD74-480A-811E-AA8300A2454F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E70B5AD3-AD74-480A-811E-AA8300A2454F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,7 +116,7 @@ Global
 		{BE33D092-E579-42FE-9811-6CF2AB8F19DC} = {34C2C4D7-1876-4517-AC4F-DB30450577AC}
 		{6C217C74-9A3F-43CD-ACE6-0C534B2F7A26} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
 		{2F30380D-12DD-4100-9035-7847AAAE6463} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
-		{79BB0F8A-8DEA-42EB-B511-AD30674CB895} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
+		{E70B5AD3-AD74-480A-811E-AA8300A2454F} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFD5BD38-80D6-4BA6-80D9-194AE7FECEDD}
