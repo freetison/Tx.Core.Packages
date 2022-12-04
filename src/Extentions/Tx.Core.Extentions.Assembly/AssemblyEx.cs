@@ -7,11 +7,17 @@ namespace Tx.Core.Extensions.Assembly
 {
     public static class AssemblyEx
     {
+        /// <summary>
+        /// Return folder name form an assembly
+        /// </summary>
+        /// <param name="assembly"></param>
+        /// <returns></returns>
         public static string GetDirectoryPathX(this System.Reflection.Assembly assembly)
         {
             string filePath = new Uri(assembly.Location).LocalPath;
             return Path.GetDirectoryName(filePath);
         }
+
 
         public static List<Type> GetAllIEntityTypeConfigurationAssembliesByNamespaceContains(string @namespace)
         {

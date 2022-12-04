@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0</TargetFrameworks>
+		<TargetFrameworks>net7.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -17,10 +17,10 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.0.4.0</Version>
+		<Version>1.0.5.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.0.4.0</AssemblyVersion>
-		<FileVersion>1.0.4.0</FileVersion>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
+		<FileVersion>1.0.5.0</FileVersion>
 		<RootNamespace>Tx.Core.Extensions.Assembly</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.Assembly</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>
@@ -32,33 +32,19 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(MSBuildRuntimeType)' == 'Core'">
-		<IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
-		<IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
-	</PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<PropertyGroup>
-			<PackageName>$(OutputPath)$(PackageId).$(PackageVersion).nupkg</PackageName>
-		</PropertyGroup>
-		<!--<Exec Command="dotnet nuget push -s http://localhost:5000/v3/index.json $(PackageName)" />-->
-		<Message Text="FINISH to Build $(PackageName)" Importance="high" />
-	</Target>
+  <Target Name="LocalDeploy" AfterTargets="GenerateNuspec">
+    <PropertyGroup>
+      <NugetPath>D:\Nuget\Tx</NugetPath>
+      <PackageName>$(OutputPath)$(PackageId).$(PackageVersion).nupkg</PackageName>
+    </PropertyGroup>
+    <Exec Command="ECHO Copying $(PackageName) to $(NugetPath)" />
+    <Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" RetryDelayMilliseconds="1000" Retries="5" />
+    <Message Text="FINISH to Build an Deploy $(PackageName)" Importance="high" />
+  </Target>
 
-	<Target Name="AfterPublish" AfterTargets="Publish">
-		<Message Text="The name of the publish profile is $(DestinationAppRoot)" />
-		<Exec Command="DIR" />
-	</Target>
-
-	<Target Name="PostPublish" AfterTargets="AfterPublish">
-		<Exec Command="echo BEGIN After-publish&#xD;&#xA;&#xD;&#xA;PublishDir=$(PublishDir)&#xD;&#xA;PublishUrl=$(PublishUrl)&#xD;&#xA;&#xD;&#xA;echo END After-publish" />
-	</Target>
-
-
-	<Target Name="CustomActionsBeforePublish" BeforeTargets="BeforePublish">
-		<Message Text="Inside BeforePublish" Importance="high" />
-	</Target>
-
-
-
+  
 </Project>
