@@ -40,6 +40,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Azure.ServiceBus", "src\Tx.Core.Azure.ServiceBus\Tx.Core.Azure.ServiceBus.csproj", "{E70B5AD3-AD74-480A-811E-AA8300A2454F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.DI.Multiple.Intances", "src\Tx.Core.DI.Multiple.Intances\Tx.Core.DI.Multiple.Intances.csproj", "{70AAFE83-AADB-4790-BD17-A73E67B394AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tx.Core.Pipeline", "src\Tx.Core.Pipeline\Tx.Core.Pipeline.csproj", "{37D23143-0E16-406B-90D7-7CCD00F60D2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +102,14 @@ Global
 		{E70B5AD3-AD74-480A-811E-AA8300A2454F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E70B5AD3-AD74-480A-811E-AA8300A2454F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E70B5AD3-AD74-480A-811E-AA8300A2454F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70AAFE83-AADB-4790-BD17-A73E67B394AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70AAFE83-AADB-4790-BD17-A73E67B394AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70AAFE83-AADB-4790-BD17-A73E67B394AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70AAFE83-AADB-4790-BD17-A73E67B394AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37D23143-0E16-406B-90D7-7CCD00F60D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37D23143-0E16-406B-90D7-7CCD00F60D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37D23143-0E16-406B-90D7-7CCD00F60D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37D23143-0E16-406B-90D7-7CCD00F60D2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +129,8 @@ Global
 		{6C217C74-9A3F-43CD-ACE6-0C534B2F7A26} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
 		{2F30380D-12DD-4100-9035-7847AAAE6463} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
 		{E70B5AD3-AD74-480A-811E-AA8300A2454F} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
+		{70AAFE83-AADB-4790-BD17-A73E67B394AF} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
+		{37D23143-0E16-406B-90D7-7CCD00F60D2E} = {AC08D764-7706-4EB0-91D3-08111CAE5F3D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DFD5BD38-80D6-4BA6-80D9-194AE7FECEDD}
