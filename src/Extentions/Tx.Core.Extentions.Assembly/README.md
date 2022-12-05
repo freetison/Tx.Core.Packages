@@ -1,6 +1,6 @@
 ﻿List of extentions methods:
 
-
+AssemblyEx
 + GetDirectoryPathX
 + GetAllIEntityTypeConfigurationAssembliesByNamespaceContains
 + GetAllAssembliesByInterface
@@ -9,4 +9,12 @@
 + GetClassOfType
 + GetTypesAssignableFrom
 + GetPropertyValue
+
+ApplicationInfo
++ Version
++ Title
++ ProductName
++ Description
++ CopyrightHolder
++ CompanyName
 

@@ -11,16 +11,13 @@
 		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 
-	<Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
-		<Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
-	</Target>
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.0.5.0</Version>
+		<Version>2.0.2</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.0.5.0</AssemblyVersion>
-		<FileVersion>1.0.5.0</FileVersion>
+    <AssemblyVersion>2.0.2</AssemblyVersion>
+		<FileVersion>2.0.2</FileVersion>
 		<RootNamespace>Tx.Core.Extensions.Assembly</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.Assembly</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>
@@ -30,21 +27,27 @@
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
-	</PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
 
   <ItemGroup>
-    <None Include="README.md" />
+    <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
-  <Target Name="LocalDeploy" AfterTargets="GenerateNuspec">
+  <Target Name="CopyPackage" AfterTargets="Pack">
     <PropertyGroup>
+      <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
       <NugetPath>D:\Nuget\Tx</NugetPath>
-      <PackageName>$(OutputPath)$(PackageId).$(PackageVersion).nupkg</PackageName>
     </PropertyGroup>
-    <Exec Command="ECHO Copying $(PackageName) to $(NugetPath)" />
-    <Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" RetryDelayMilliseconds="1000" Retries="5" />
-    <Message Text="FINISH to Build an Deploy $(PackageName)" Importance="high" />
+    <Copy
+      SourceFiles="$(PackageName)"
+      DestinationFolder="$(NugetPath)"
+    />
+    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high"/>
   </Target>
 
+  <Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
+    <Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
+  </Target>
   
 </Project>

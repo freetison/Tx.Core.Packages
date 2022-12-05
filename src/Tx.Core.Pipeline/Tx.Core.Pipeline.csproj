@@ -35,14 +35,20 @@
     <None Include="README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
-  <Target Name="LocalDeploy" AfterTargets="GenerateNuspec">
+  <Target Name="CopyPackage" AfterTargets="Pack">
     <PropertyGroup>
+      <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
       <NugetPath>D:\Nuget\Tx</NugetPath>
-      <PackageName>$(OutputPath)$(PackageId).$(PackageVersion).nupkg</PackageName>
     </PropertyGroup>
-    <Exec Command="ECHO Copying $(PackageName) to $(NugetPath)" />
-    <Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" RetryDelayMilliseconds="1000" Retries="5" />
-    <Message Text="FINISH to Build an Deploy $(PackageName)" Importance="high" />
+    <Copy
+      SourceFiles="$(PackageName)"
+      DestinationFolder="$(NugetPath)"
+    />
+    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high"/>
+  </Target>
+
+  <Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
+    <Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
   </Target>
 
 </Project>

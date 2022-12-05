@@ -1,0 +1,39 @@
+﻿List of extentions methods:
+
+
++ IsNumeric
++ ToHex
++ Left
++ Right
++ Truncate
++ TruncFromRight
++ TruncFromLeft
++ CopyUntil
++ ToDecimal
++ ToDouble
++ ToLong
++ ToBoolean
++ IsTrue
++ ToUtf8Bytes
++ ToJson
++ ParseTo
++ CopyUntilChar
++ CopyFromChar
++ ReplaceAt
++ ArraySearch
++ Apostrophe
++ In
++ Space
++ Val
++ EncodeToBase64
++ DecodeFromBase64
++ ToBase64String
++ GetBytes
++ WordsCount
++ Replace
++ TryParse
++ ToInt
++ CleanAsInt
++ CleanAsDecimal
++ CleanAsString
++ IsValidJson
