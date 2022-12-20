@@ -9,9 +9,9 @@ namespace Tx.Core.GenericFactory
     /// genericFactory.Register(1, () => new Car(new Person("Roland")));
     /// genericFactory.Register(2, () => new Motorcycle(new Person("Isa")));
     /// var result = genericFactory.Get(2);
-    public class GenericFactory<T, TK> where TK : class
+    public class GenericFactory<T, TK> : IGenericFactory<T, TK> where TK : class
     {
-        private Dictionary<T, Func<TK>> _dict = new Dictionary<T, Func<TK>>();
+        private readonly Dictionary<T, Func<TK>> _dict = new Dictionary<T, Func<TK>>();
 
         public GenericFactory() { }
 

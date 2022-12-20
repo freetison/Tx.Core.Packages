@@ -17,8 +17,7 @@ namespace Tx.Core.Extensions.Assembly
             string filePath = new Uri(assembly.Location).LocalPath;
             return Path.GetDirectoryName(filePath);
         }
-
-
+        
         public static List<Type> GetAllIEntityTypeConfigurationAssembliesByNamespaceContains(string @namespace)
         {
             if (string.IsNullOrEmpty(@namespace)) return new List<Type>();
