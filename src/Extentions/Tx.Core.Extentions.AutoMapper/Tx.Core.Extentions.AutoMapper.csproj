@@ -13,10 +13,10 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.0.7</Version>
+		<Version>1.0.7.1</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.0.7</AssemblyVersion>
-		<FileVersion>1.0.7</FileVersion>
+    <AssemblyVersion>1.0.7.1</AssemblyVersion>
+		<FileVersion>1.0.7.1</FileVersion>
 		<RootNamespace>Tx.Core.Extensions.AutoMapper</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.AutoMapper</AssemblyName>
 		<PackageReleaseNotes></PackageReleaseNotes>
@@ -48,7 +48,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
 	</ItemGroup>
 
 
