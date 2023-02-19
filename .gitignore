@@ -19,6 +19,7 @@ nupkg/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
+.[Vv]s/
 x64/
 x86/
 build/
@@ -29,3 +30,4 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+*.v2
