@@ -36,7 +36,7 @@
   <Target Name="CopyPackage" AfterTargets="Pack">
     <PropertyGroup>
       <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
-      <NugetPath>D:\Nuget\Tx</NugetPath>
+      <NugetPath>D:\Nuget\Tx\Tx.Core.Extensions.AutoMapper</NugetPath>
     </PropertyGroup>
     <Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" />
     <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high" />

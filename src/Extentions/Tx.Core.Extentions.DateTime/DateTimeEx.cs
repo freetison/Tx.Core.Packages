@@ -29,7 +29,7 @@ namespace Tx.Core.Extensions.DateTime
             long unixTimeStampInTicks = (dateTime.ToUniversalTime() - unixStart).Ticks;
             return (double)unixTimeStampInTicks / TimeSpan.TicksPerSecond;
         }
-
+        
     }
 
 }
