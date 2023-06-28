@@ -8,16 +8,26 @@
 
     public abstract class Enumeration : IComparable
     {
-        public string Name { get; private set; }
-
         public double Id { get; private set; }
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+
 
         protected Enumeration(double id, string name)
         {
-            this.Id = id;
-            this.Name = name;
+            Id = id;
+            Name = name;
         }
 
+        protected Enumeration(double id, string name, string description)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+        }
+
+        public double GetValue() => this.Id;
+        public string GetDescription() => this.Description;
         public override string ToString() => this.Name;
 
         public static IEnumerable<T> GetAll<T>() where T : Enumeration

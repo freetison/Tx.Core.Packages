@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0</TargetFrameworks>
+		<TargetFrameworks>net5.0; net6.0; net7.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -38,11 +38,8 @@
       <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
       <NugetPath>D:\Nuget\Tx</NugetPath>
     </PropertyGroup>
-    <Copy
-      SourceFiles="$(PackageName)"
-      DestinationFolder="$(NugetPath)"
-    />
-    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high"/>
+    <Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" />
+    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high" />
   </Target>
 
   <Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
