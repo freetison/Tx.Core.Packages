@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using System;
+
 namespace Tx.Core.DbContextFactory;
 
-public interface IDbContextFactory<out TContext> where TContext : DbContext
+public interface IDbContextFactory<out TContext> where TContext : DbContext, IDisposable
 {
     TContext CreateForRead(string connectionString);
 

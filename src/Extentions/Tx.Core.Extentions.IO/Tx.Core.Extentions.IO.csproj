@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net7.0</TargetFrameworks>
+		<TargetFrameworks>net8.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -14,13 +14,13 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>2.0.3</Version>
+		<Version>2.1.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>2.0.3</AssemblyVersion>
-		<FileVersion>2.0.3</FileVersion>
+    <AssemblyVersion>2.1.0</AssemblyVersion>
+		<FileVersion>2.1.0</FileVersion>
 		<RootNamespace>Tx.Core.Extentions.IO</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.IO</AssemblyName>
-		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
 		<Description>Assembly Extensions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

@@ -3,8 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Tx.Core.DbContextFactory
 {
-    public class ContextFactory<TContext> : IContextFactory<TContext> where TContext : DbContext
+    /// <summary>
+    ///  Multiple Context Fabric
+    ///     services.AddSingleton<IContextFactory<SgcDbContext>, ContextFactory<SgcDbContext>>();
+    ///     services.AddSingleton<IContextFactory<MgftAccessDbContext>, ContextFactory<MgftAccessDbContext>>();
+    ///     services.AddScoped<IContextSelector<SgcDbContext>, ContextSelector>();
+    /// </summary>
+    public class ContextFactory<TContext> : IContextFactory<TContext> where TContext : DbContext, IDisposable
     {
+        private bool _disposed;
         private readonly string _connectionString;
         private readonly DbContextOptionsBuilder<TContext> _optionsBuilder = new DbContextOptionsBuilder<TContext>();
 
@@ -34,6 +41,19 @@ namespace Tx.Core.DbContextFactory
 
             return context;
 
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+            if (disposing) this.Dispose();
+            _disposed = true;
         }
     }
 }

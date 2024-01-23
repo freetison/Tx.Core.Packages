@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net7.0</TargetFrameworks>
+		<TargetFrameworks>net8.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -13,13 +13,13 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>2.0.2</Version>
+		<Version>2.1.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>2.0.2</AssemblyVersion>
-		<FileVersion>2.0.2</FileVersion>
+    <AssemblyVersion>2.1.0</AssemblyVersion>
+		<FileVersion>2.1.0</FileVersion>
 		<RootNamespace>Tx.Core.Extensions.String</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.String</AssemblyName>
-		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
 		<Description>String Extensions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -48,7 +48,8 @@
 
 
   <ItemGroup>
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Text.Json" Version="7.0.3" />
 	</ItemGroup>
 
 

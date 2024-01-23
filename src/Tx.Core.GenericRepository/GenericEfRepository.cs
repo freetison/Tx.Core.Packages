@@ -14,15 +14,15 @@ namespace Tx.Core.GenericRepository
 
         protected GenericEFRepository(DbContext dbContext) => DbContext = dbContext;
 
-        public async Task<int> Count(Expression<Func<TEntity, bool>> match) => await DbContext.Set<TEntity>().CountAsync();
+        public Task<int> CountAsync(Expression<Func<TEntity, bool>> match) => DbContext.Set<TEntity>().CountAsync();
 
-        public async Task<int> Add(TEntity entity)
+        public async Task<int> AddAsync(TEntity entity)
         {
             DbContext.Set<TEntity>().Add(entity);
             return await DbContext.SaveChangesAsync();
         }
 
-        public async Task<TEntity> Update(TEntity entity, object key)
+        public async Task<TEntity> UpdateAsync(TEntity entity, object key)
         {
             if (entity == null) return null;
             var exist = await DbContext.Set<TEntity>().FindAsync(key);
@@ -35,38 +35,38 @@ namespace Tx.Core.GenericRepository
             return exist;
         }
 
-        public async Task<int> Delete(TEntity entity)
+        public async Task<int> DeleteAsync(TEntity entity)
         {
             DbContext.Set<TEntity>().Remove(entity);
             return await DbContext.SaveChangesAsync();
         }
 
-        public async Task<IQueryable<TEntity>> GetBy(Expression<Func<TEntity, bool>> match)
+        public async Task<IQueryable<TEntity>> GetByAsync(Expression<Func<TEntity, bool>> match)
         {
-           var result = await DbContext.Set<TEntity>().Where(match).ToListAsync();
+           var result = await DbContext.Set<TEntity>().Where(match).ToListAsync().ConfigureAwait(false);
            return result.AsQueryable();
         }
 
-        public async Task<IQueryable<TEntity>> GetAll()
+        public async Task<IQueryable<TEntity>> GetAllAsync()
         {
             var data = await DbContext.Set<TEntity>().ToListAsync();
             return data.AsQueryable();
         }
 
-        public async Task<IQueryable<TEntity>> GetAllIncluding(params Expression<Func<TEntity, object>>[] includeProperties)
+        public async Task<IQueryable<TEntity>> GetAllIncludingAsync(params Expression<Func<TEntity, object>>[] includeProperties)
         {
-            var queryable = await GetAll();
+            var queryable = await GetAllAsync();
             var data = includeProperties.Aggregate(queryable, (current, includeProperty) => current.Include(includeProperty));
             return data.AsQueryable();
         }
 
-        public async Task<bool> Exist(Expression<Func<TEntity, bool>> match)
+        public async Task<bool> ExistAsync(Expression<Func<TEntity, bool>> match)
         {
             var result = await DbContext.Set<TEntity>().FirstOrDefaultAsync(match);
             return result != default;
         }
 
-        public async Task<int> Save() => await DbContext.SaveChangesAsync();
+        public async Task<int> SaveAsync() => await DbContext.SaveChangesAsync().ConfigureAwait(false);
 
         public void Dispose()
         {

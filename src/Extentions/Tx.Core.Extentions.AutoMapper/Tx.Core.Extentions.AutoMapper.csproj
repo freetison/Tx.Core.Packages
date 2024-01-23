@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net7.0</TargetFrameworks>
+		<TargetFrameworks>net8.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -13,13 +13,13 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.0.7.1</Version>
+		<Version>1.1.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.0.7.1</AssemblyVersion>
-		<FileVersion>1.0.7.1</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+		<FileVersion>1.1.0</FileVersion>
 		<RootNamespace>Tx.Core.Extensions.AutoMapper</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.AutoMapper</AssemblyName>
-		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
 		<Description>AutoMapper Extensions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -31,6 +31,10 @@
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
   </ItemGroup>
 
   <Target Name="CopyPackage" AfterTargets="Pack">
@@ -45,11 +49,6 @@
   <Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
     <Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
   </Target>
-
-
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.1" />
-	</ItemGroup>
 
 
 

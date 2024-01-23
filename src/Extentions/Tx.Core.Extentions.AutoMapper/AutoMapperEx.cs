@@ -1,6 +1,8 @@
 ﻿
-using System.Linq;
 using AutoMapper;
+
+using System.Linq;
+
 
 namespace Tx.Core.Extensions.AutoMapper
 {

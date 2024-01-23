@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 using NewtonsoftSerializer = Newtonsoft.Json;
 using JsonSerializer = System.Text.Json.JsonSerializer;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace Tx.Core.Extensions.String
 {

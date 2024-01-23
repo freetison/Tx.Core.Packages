@@ -1,4 +1,4 @@
-﻿namespace Tx.Core.Extention.IO;
+﻿namespace Tx.Core.Extentions.IO;
 
 public class AppInfo
 {
