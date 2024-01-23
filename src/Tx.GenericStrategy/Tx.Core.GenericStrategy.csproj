@@ -1,25 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">True</PublicSign>
-    <IsPackable>true</IsPackable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">True</PublicSign>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
 
   <PropertyGroup>
     <Authors>Angel Sola</Authors>
     <Company>Tx</Company>
-    <Version>2.0.0</Version>
-    <AssemblyVersion>2.0.0</AssemblyVersion>
-    <FileVersion>2.0.0</FileVersion>
+    <Version>2.1.0</Version>
+    <AssemblyVersion>2.1.0</AssemblyVersion>
+    <FileVersion>2.1.0</FileVersion>
     <AssemblyName>Tx.Core.GenericStrategy</AssemblyName>
     <RootNamespace>Tx.Core.GenericStrategy</RootNamespace>
+	<PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
     <Description>Generic strategy implementation usign de DI container</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>

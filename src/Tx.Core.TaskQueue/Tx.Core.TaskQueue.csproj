@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net8.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -15,12 +15,11 @@
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
 		<Company>Tx</Company>
-		<Version>1.0.2</Version>
-		<AssemblyVersion>1.0.2</AssemblyVersion>
-		<FileVersion>1.0.2</FileVersion>
+		<Version>1.1.0</Version>
+		<AssemblyVersion>1.1.0</AssemblyVersion>
+		<FileVersion>1.1.0</FileVersion>
 		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<PackageReleaseNotes></PackageReleaseNotes>
 		<Description>Task Queue Implementation</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>

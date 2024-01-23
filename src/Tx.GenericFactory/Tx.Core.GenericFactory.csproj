@@ -1,26 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">True</PublicSign>
-    <IsPackable>true</IsPackable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+		<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+		<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">True</PublicSign>
+		<IsPackable>true</IsPackable>
+	</PropertyGroup>
 
   <PropertyGroup>
     <Authors>Angel Sola</Authors>
     <Company>Tx</Company>
-    <Version>1.0.2</Version>
-    <AssemblyVersion>1.0.2</AssemblyVersion>
-    <FileVersion>1.0.2</FileVersion>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
     <RootNamespace>Tx.Core.GenericFactory</RootNamespace>
     <AssemblyName>Tx.Core.GenericFactory</AssemblyName>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
     <Description>Generic factory to use with or without dependy injection</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
@@ -29,21 +29,20 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\" />
-  </ItemGroup>
+  
+    <ItemGroup>
+	    <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
   <Target Name="CopyPackage" AfterTargets="Pack">
     <PropertyGroup>
       <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
       <NugetPath>D:\Nuget\Tx</NugetPath>
     </PropertyGroup>
-    <Copy
-      SourceFiles="$(PackageName)"
-      DestinationFolder="$(NugetPath)"
-    />
-    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high"/>
+    <Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" />
+    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high" />
   </Target>
+	
 
   <Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
     <Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
