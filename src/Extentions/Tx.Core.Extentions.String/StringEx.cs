@@ -96,6 +96,29 @@ namespace Tx.Core.Extensions.String
             catch (Exception ex) { Console.WriteLine(ex.Message); return default(T); }
         }
 
+        // using System.Text.Json
+        public static string ToJson(this object value, JsonSerializerOptions options = null)
+        {
+            if (value == null) return null;
+            try
+            {
+                return JsonSerializer.Serialize(value, options ?? new JsonSerializerOptions());
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+
+        // using System.Text.Json
+        public static T ParseTo<T>(this string str, JsonSerializerOptions options = null)
+        {
+            if (string.IsNullOrEmpty(str)) { return default(T); }
+            try { return JsonSerializer.Deserialize<T>(str, options ?? new JsonSerializerOptions()); }
+            catch (Exception ex) { return default(T); }
+        }
+
         public static string CopyUntilChar(this string str, int startindex, char caracter) => str.Substring(startindex, str.IndexOf(caracter));
 
         // Return a substring from x char to the end
