@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.RegularExpressions;
 
-using Tx.Core.Extentions.String;
+using Tx.Core.Extensions.String;
 
 namespace Tx.Core.Extentions.IO
 {
@@ -72,10 +72,7 @@ namespace Tx.Core.Extentions.IO
             else
                 return false;
             //Console.WriteLine("Source path does not exist!");
-
         }
-
-
 
         public static int CountStr(string file, string str)
         {
@@ -91,6 +88,5 @@ namespace Tx.Core.Extentions.IO
             }
             return i1;
         }
-
     }
 }

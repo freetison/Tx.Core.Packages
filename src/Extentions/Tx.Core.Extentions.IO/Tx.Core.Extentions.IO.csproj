@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net8.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -14,13 +14,13 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>2.1.0</Version>
+		<Version>2.2.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>2.1.0</AssemblyVersion>
-		<FileVersion>2.1.0</FileVersion>
+    <AssemblyVersion>2.2.0</AssemblyVersion>
+		<FileVersion>2.2.0</FileVersion>
 		<RootNamespace>Tx.Core.Extentions.IO</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.IO</AssemblyName>
-		<PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
+		<PackageReleaseNotes>Upgrate to net 9.0</PackageReleaseNotes>
 		<Description>Assembly Extensions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -34,10 +34,38 @@
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Tx.Core.Extentions.String" Version="1.2.1.5" />
-  </ItemGroup>
+	<!-- Framework-specific properties -->
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<DefineConstants>NET8_0</DefineConstants>
+	</PropertyGroup>
 
+	<!-- Framework-specific properties -->
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net9.0'">
+		<DefineConstants>NET9_0</DefineConstants>
+	</PropertyGroup>
+
+	<!-- Common package references -->
+	<ItemGroup>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Tx.Core.Extentions.String\Tx.Core.Extentions.String.csproj" />
+	</ItemGroup>
+
+	<!-- Common package references -->
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<!-- Framework-specific package references -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<PackageReference Include="Tx.Core.Extensions.String" Version="2.1.2024.25" />
+	</ItemGroup>
+
+	<!-- Framework-specific package references -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+	    <PackageReference Include="Tx.Core.Extensions.String" Version="2.2.2025.10" />
+	</ItemGroup>
+	  
   <Target Name="CopyPackage" AfterTargets="Pack">
     <PropertyGroup>
       <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>

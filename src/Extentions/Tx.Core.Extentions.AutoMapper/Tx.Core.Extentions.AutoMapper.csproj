@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net8.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -13,13 +13,13 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>1.1.0</Version>
+		<Version>1.2.0</Version>
     <Company>Tx</Company>
-    <AssemblyVersion>1.1.0</AssemblyVersion>
-		<FileVersion>1.1.0</FileVersion>
+    <AssemblyVersion>1.2.0</AssemblyVersion>
+		<FileVersion>1.2.0</FileVersion>
 		<RootNamespace>Tx.Core.Extensions.AutoMapper</RootNamespace>
 		<AssemblyName>Tx.Core.Extensions.AutoMapper</AssemblyName>
-		<PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
+		<PackageReleaseNotes>Upgrate to net 9.0</PackageReleaseNotes>
 		<Description>AutoMapper Extensions</Description>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -33,11 +33,18 @@
     <None Include="README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="12.0.1" />
-  </ItemGroup>
+  <!-- Framework-specific package references -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+	    <PackageReference Include="AutoMapper" Version="12.0.1" />
+	</ItemGroup>
 
-  <Target Name="CopyPackage" AfterTargets="Pack">
+	<!-- Framework-specific package references -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+	</ItemGroup>
+
+
+	<Target Name="CopyPackage" AfterTargets="Pack">
     <PropertyGroup>
       <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
       <NugetPath>D:\Nuget\Tx\Tx.Core.Extensions.AutoMapper</NugetPath>
