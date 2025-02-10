@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Tx.Core.DI.Multiple.Instance;
+namespace Tx.Core.Pipeline;
 
 public abstract class AsyncPipeline<TIn, TOut> : IAsyncPipelineStep<TIn, TOut>
 {

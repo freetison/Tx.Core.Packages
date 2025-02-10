@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -15,13 +15,17 @@
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
 		<Company>Tx</Company>
-		<Version>1.1.0</Version>
-		<AssemblyVersion>1.1.0</AssemblyVersion>
-		<FileVersion>1.1.0</FileVersion>
-		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
-		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
-		<PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
 		<Description>Task Queue Implementation</Description>
+		<PackageReleaseNotes>Upgrate to net 9.0</PackageReleaseNotes>
+		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<VersionPrefix>1.2</VersionPrefix>
+		<Build>$([System.DateTime]::UtcNow.ToString(yyyy))</Build>
+		<Revision>$([System.DateTime]::UtcNow.ToString(dd))</Revision>
+		<FullVersion>$(VersionPrefix).$(Build).$(Revision)</FullVersion>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyVersion>$(FullVersion)</AssemblyVersion>
+		<FileVersion>$(FullVersion)</FileVersion>
+		<Version>$(FullVersion)</Version>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -50,19 +54,18 @@
   </Target>
 
   
-  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0' ">
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0' ">
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0' ">
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0' ">
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.1" />
+	<PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
-    <PackageReference Include="Tx.Core.TaskQueue" Version="1.1.0" />
+    <PackageReference Include="Tx.Core.TaskQueue" Version="1.2.2025.10" />
   </ItemGroup>
 
 </Project>
