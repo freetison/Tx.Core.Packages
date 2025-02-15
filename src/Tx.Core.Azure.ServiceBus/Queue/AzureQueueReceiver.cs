@@ -1,18 +1,22 @@
-﻿using System;
+﻿using Azure.Messaging.ServiceBus;
+
+using Newtonsoft.Json;
+
+using System;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.ServiceBus;
-using Newtonsoft.Json;
+
 using Tx.Core.Azure.ServiceBus.Common;
 
 namespace Tx.Core.Azure.ServiceBus.Queue
 {
     public class AzureQueueReceiver : IAzureQueueReceiver
     {
-        private readonly IQueueClient _queueClient;
-        public AzureQueueReceiver(IQueueClient queueClient)
+        private readonly ServiceBusClient _serviceBusClient;
+
+        public AzureQueueReceiver(ServiceBusClient serviceBusClient)
         {
-            _queueClient = queueClient;
+            _serviceBusClient = serviceBusClient;
         }
 
         public void Receive<T>(Func<T, MessageProcessResponse> onProcess, Action<Exception> onError, Action onWait)
@@ -43,9 +47,11 @@ namespace Tx.Core.Azure.ServiceBus.Queue
                             case MessageProcessResponse.Complete:
                                 await _queueClient.CompleteAsync(message.SystemProperties.LockToken).ConfigureAwait(false);
                                 break;
+
                             case MessageProcessResponse.Abandon:
                                 await _queueClient.AbandonAsync(message.SystemProperties.LockToken).ConfigureAwait(false);
                                 break;
+
                             case MessageProcessResponse.Dead:
                                 await _queueClient.DeadLetterAsync(message.SystemProperties.LockToken).ConfigureAwait(false);
                                 break;
@@ -61,6 +67,5 @@ namespace Tx.Core.Azure.ServiceBus.Queue
                     }
                 }, options);
         }
-
     }
 }

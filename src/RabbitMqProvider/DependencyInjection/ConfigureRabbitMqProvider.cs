@@ -1,9 +1,10 @@
-﻿namespace TvMaze.RabbitMqProvider.DependencyInjection
+﻿namespace Tx.Core.RabbitMqProvider.DependencyInjection
 {
     using Microsoft.Extensions.DependencyInjection;
+
     using RabbitMQ.Client;
-    using TvMaze.RabbitMqProvider;
-    using TvMaze.ShareCommon.Models.Settings;
+
+    using RabbitMqProvider;
 
     /// <summary>
     /// Defines the <see cref="ConfigureRabbitMqProvider" />.
@@ -16,25 +17,31 @@
         /// <param name="services">The services<see cref="IServiceCollection"/>.</param>
         /// <param name="rabbitMqSettings">The rabbitMqSettings<see cref="RabbitMqSettings"/>.</param>
         /// <returns>The <see cref="IServiceCollection"/>.</returns>
-        public static IServiceCollection AddRabbitMqProvider(this IServiceCollection services, RabbitMqSettings rabbitMqSettings)
+        public static async Task<IServiceCollection> AddRabbitMqProviderAsync(this IServiceCollection services, RabbitMqSettings rabbitMqSettings)
         {
             services.AddSingleton(rabbitMqSettings);
-            var connectionFactory = new ConnectionFactory
-            {
-                UserName = rabbitMqSettings.RabbitMqUserName,
-                Password = rabbitMqSettings.RabbitMqPassword,
-                HostName = rabbitMqSettings.RabbitMqHostName ?? "localhost",
-                Port = rabbitMqSettings?.RabbitMqPort ?? 5672,
-                DispatchConsumersAsync = true,
-                AutomaticRecoveryEnabled = true,
-                ConsumerDispatchConcurrency = rabbitMqSettings?.RabbitMqConcurrency ?? 50,
-            };
-            services.AddSingleton<IConnectionFactory>(_ => connectionFactory);
-            services.AddSingleton<ModelFactory>();
-            services.AddSingleton(sp => sp.GetRequiredService<ModelFactory>().CreateChannel());
+            services.AddSingleton<IConnectionFactory>(_ => CreateConnectionFactory(rabbitMqSettings));
+
+            var connectionFactory = CreateConnectionFactory(rabbitMqSettings);
+            var connection = await connectionFactory.CreateConnectionAsync();
+            services.AddSingleton(connection);
+
             services.AddSingleton<IRabbitMqClientProvider, RabbitMqClientProvider>();
 
             return services;
+        }
+
+        private static ConnectionFactory CreateConnectionFactory(RabbitMqSettings settings)
+        {
+            return new ConnectionFactory
+            {
+                UserName = settings.RabbitMqUserName,
+                Password = settings.RabbitMqPassword,
+                HostName = settings.RabbitMqHostName,
+                Port = settings.RabbitMqPort,
+                AutomaticRecoveryEnabled = true,
+                ConsumerDispatchConcurrency = settings.RabbitMqConcurrency
+            };
         }
     }
 }

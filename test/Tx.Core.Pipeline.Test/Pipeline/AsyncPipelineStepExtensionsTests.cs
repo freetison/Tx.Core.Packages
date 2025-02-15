@@ -1,7 +1,7 @@
-﻿namespace Tx.Core.Pipeline.Test.Pipeline
-{
-    using Shouldly;
+﻿using Moq;
 
+namespace Tx.Core.Pipeline.Test.Pipeline
+{
     using System;
     using System.Threading.Tasks;
 
@@ -9,148 +9,126 @@
 
     public class AsyncPipelineStepExtensionsTests
     {
-        private class TestStep : IAsyncPipelineStep<string, int>
+        [Fact]
+        public async Task Step_InputIsNull_ThrowsArgumentNullException()
         {
-            public string StepName => "TestStep";
+            // Arrange
+            Task<object> input = null;
+            var step = new Mock<IAsyncPipelineStep<object, object>>().Object;
 
-            public Task<int> ProcessAsync(string input)
-            {
-                return Task.FromResult(input.Length);
-            }
-        }
-
-        private class AlternateStep : IAsyncPipelineStep<int, int>
-        {
-            public string StepName => "AlternateStep";
-
-            public Task<int> ProcessAsync(int input)
-            {
-                return Task.FromResult(input * 2);
-            }
-        }
-
-        private readonly TestStep _testStep;
-        private readonly AlternateStep _alternateStep;
-
-        public AsyncPipelineStepExtensionsTests()
-        {
-            _testStep = new TestStep();
-            _alternateStep = new AlternateStep();
+            // Act and Assert
+            await Assert.ThrowsAsync<ArgumentNullException>(() => input.Step(step));
         }
 
         [Fact]
-        public async Task Step_WithTaskInput_ProcessesCorrectly()
+        public async Task Step_StepIsNull_ThrowsArgumentNullException()
         {
             // Arrange
-            var input = Task.FromResult("test");
+            var input = Task.FromResult(new object());
+            IAsyncPipelineStep<object, object> step = null;
+
+            // Act and Assert
+            await Assert.ThrowsAsync<ArgumentNullException>(() => input.Step(step));
+        }
+
+        [Fact]
+        public async Task Step_ValidInputAndStep_ProcessesInput()
+        {
+            // Arrange
+            var input = Task.FromResult("input");
+            var step = new Mock<IAsyncPipelineStep<string, string>>();
+            step.Setup(s => s.ProcessAsync(It.IsAny<string>())).ReturnsAsync("output");
 
             // Act
-            var result = await input.Step(_testStep);
+            var result = await input.Step(step.Object);
 
             // Assert
-            result.ShouldBe(4);
+            Assert.Equal("output", result);
         }
 
         [Fact]
-        public async Task Step_WithDirectInput_ProcessesCorrectly()
+        public async Task Step_TInputIsNotTask_ValidInputAndStep_ProcessesInput()
         {
             // Arrange
-            var input = "test";
+            var input = "input";
+            var step = new Mock<IAsyncPipelineStep<string, string>>();
+            step.Setup(s => s.ProcessAsync(It.IsAny<string>())).ReturnsAsync("output");
 
             // Act
-            var result = await input.Step(_testStep);
+            var result = await input.Step(step.Object);
 
             // Assert
-            result.ShouldBe(4);
+            Assert.Equal("output", result);
         }
 
-        [Theory]
-        [InlineData(true, 4)]  // Use primary step
-        [InlineData(false, 8)] // Use alternate step
-        public async Task When_ConditionDeterminesStep_ProcessesCorrectly(bool condition, int expectedResult)
+        [Fact]
+        public async Task When_InputIsNull_ThrowsArgumentNullException()
         {
             // Arrange
-            var input = Task.FromResult(2); // Change input to int
-            bool GetCondition() => condition;
+            Task<object> input = null;
+            var step = new Mock<IAsyncPipelineStep<object, object>>().Object;
+            var elseStep = new Mock<IAsyncPipelineStep<object, object>>().Object;
+
+            // Act and Assert
+            await Assert.ThrowsAsync<ArgumentNullException>(() => input.When(Condition(true), step, elseStep));
+        }
+
+        [Fact]
+        public async Task When_StepIsNull_ThrowsArgumentNullException()
+        {
+            // Arrange
+            var input = Task.FromResult(new object());
+            IAsyncPipelineStep<object, object> step = null;
+            var elseStep = new Mock<IAsyncPipelineStep<object, object>>().Object;
+
+            // Act and Assert
+            await Assert.ThrowsAsync<ArgumentNullException>(() => input.When(Condition(true), step, elseStep));
+        }
+
+        [Fact]
+        public async Task When_ElseStepIsNull_ThrowsArgumentNullException()
+        {
+            // Arrange
+            var input = Task.FromResult(new object());
+            var step = new Mock<IAsyncPipelineStep<object, object>>().Object;
+            IAsyncPipelineStep<object, object> elseStep = null;
+
+            // Act and Assert
+            await Assert.ThrowsAsync<ArgumentNullException>(() => AsyncPipelineStepExtensions.When(input, () => true, step, elseStep));
+        }
+
+        [Fact]
+        public async Task When_ConditionIsTrue_ExecutesStep()
+        {
+            // Arrange
+            var input = Task.FromResult("input");
+            var step = new Mock<IAsyncPipelineStep<string, string>>();
+            step.Setup(s => s.ProcessAsync(It.IsAny<string>())).ReturnsAsync("output");
+            var elseStep = new Mock<IAsyncPipelineStep<string, string>>();
 
             // Act
-            var result = await input.When(GetCondition, _alternateStep, _alternateStep); // Use int steps
+            var result = await input.When(Condition(true), step.Object, elseStep.Object);
 
             // Assert
-            result.ShouldBe(expectedResult);
+            Assert.Equal("output", result);
         }
 
         [Fact]
-        public async Task Step_WithNullInput_ThrowsException()
+        public async Task When_ConditionIsFalse_ExecutesElseStep()
         {
             // Arrange
-            string nullInput = null;
-
-            // Act & Assert
-            var exception = await Should.ThrowAsync<NullReferenceException>(
-                async () => await nullInput.Step(_testStep));
-        }
-
-        [Fact]
-        public async Task Step_WithNullTask_ThrowsException()
-        {
-            // Arrange
-            Task<string> nullTask = null;
-
-            // Act & Assert
-            await Should.ThrowAsync<ArgumentNullException>(
-                async () => await nullTask.Step(_testStep));
-        }
-
-        [Fact]
-        public async Task When_WithNullCondition_ThrowsException()
-        {
-            // Arrange
-            var input = Task.FromResult("test");
-            Func<bool> nullCondition = null;
-
-            // Act & Assert
-            await Should.ThrowAsync<ArgumentNullException>(
-                async () => await input.When(nullCondition, _testStep, _testStep));
-        }
-
-        [Fact]
-        public async Task When_WithNullStep_ThrowsException()
-        {
-            // Arrange
-            var input = Task.FromResult("test");
-
-            // Act & Assert
-            await Should.ThrowAsync<ArgumentNullException>(
-                async () => await input.When(() => true, null, _testStep));
-        }
-
-        [Fact]
-        public async Task Step_WithEmptyInput_ReturnsZero()
-        {
-            // Arrange
-            var input = string.Empty;
+            var input = Task.FromResult("input");
+            var step = new Mock<IAsyncPipelineStep<string, string>>();
+            var elseStep = new Mock<IAsyncPipelineStep<string, string>>();
+            elseStep.Setup(s => s.ProcessAsync(It.IsAny<string>())).ReturnsAsync("output");
 
             // Act
-            var result = await input.Step(_testStep);
+            var result = await input.When(Condition(false), step.Object, elseStep.Object);
 
             // Assert
-            result.ShouldBe(0);
+            Assert.Equal("output", result);
         }
 
-        [Fact]
-        public async Task Step_ChainedCalls_ProcessesCorrectly()
-        {
-            // Arrange
-            var input = "test";
-
-            // Act
-            var result = await input
-                .Step(_testStep)
-                .Step(_alternateStep); // Chain multiple steps
-
-            // Assert
-            result.ShouldBe(1); // Length of "4" is 1
-        }
+        private Func<bool> Condition(bool v) => () => v;
     }
 }

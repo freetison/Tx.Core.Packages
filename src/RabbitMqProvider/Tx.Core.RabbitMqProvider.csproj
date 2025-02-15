@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+<PropertyGroup>
+	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+	<LangVersion>latest</LangVersion>
+	<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	<GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+	<PublicSign Condition=" '$(OS)' != 'Windows_NT' ">True</PublicSign>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<Nullable>enable</Nullable>
+	<IsPackable>true</IsPackable>
+</PropertyGroup>
+
+	<PropertyGroup>
+		<Authors>Angel Sola</Authors>
+		<Company>Tx</Company>
+		<Description>RabbitMq Provider Implementation</Description>
+		<PackageReleaseNotes>Upgrate to net 9.0</PackageReleaseNotes>
+		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<VersionPrefix>1.2</VersionPrefix>
+		<Build>$([System.DateTime]::UtcNow.ToString(yyyy))</Build>
+		<Revision>$([System.DateTime]::UtcNow.ToString(dd))</Revision>
+		<FullVersion>$(VersionPrefix).$(Build).$(Revision)</FullVersion>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyVersion>$(FullVersion)</AssemblyVersion>
+		<FileVersion>$(FullVersion)</FileVersion>
+		<Version>$(FullVersion)</Version>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<!-- Common package references -->
+	<ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.2" />
+      <PackageReference Include="RabbitMQ.Client" Version="7.0.0" />
+      <PackageReference Include="System.Text.Json" Version="9.0.2" />
+      <PackageReference Include="Tx.Core.Extensions.String" Version="2.2.2025.10" />
+	</ItemGroup>
+
+	<!-- Framework-specific package references -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+	</ItemGroup>
+
+	<!-- Framework-specific package references -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+	</ItemGroup>
+
+	<Target Name="CopyPackage" AfterTargets="Pack">
+		<PropertyGroup>
+			<PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
+			<NugetPath>D:\Nuget\Tx</NugetPath>
+		</PropertyGroup>
+		<Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" />
+		<Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high" />
+	</Target>
+
+	<Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
+		<Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
+	</Target>
+
+	<ItemGroup>
+    <PackageReference Update="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

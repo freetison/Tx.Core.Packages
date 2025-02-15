@@ -1,4 +1,4 @@
-﻿namespace Tx.Core.DI.Multiple.Instance;
+﻿namespace Tx.Core.DI.Multiple.Intances;
 
 public interface ICustomServiceWrapper<out T>
 {

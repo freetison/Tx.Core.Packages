@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -14,30 +14,34 @@
 
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
-		<Version>2.1.0</Version>
-    <Company>Tx</Company>
-    <AssemblyVersion>2.1.0</AssemblyVersion>
-		<FileVersion>2.1.0</FileVersion>
-		<RootNamespace>Tx.Core.Abstractions.Exceptions</RootNamespace>
-		<AssemblyName>Tx.Core.Abstractions.Exceptions</AssemblyName>
-		<PackageReleaseNotes>Upgrate to net 8.0</PackageReleaseNotes>
+		<Company>Tx</Company>
 		<Description>Exceptions Abstractions</Description>
+		<PackageReleaseNotes>Upgrate to net 9.0</PackageReleaseNotes>
+		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<VersionPrefix>2.2</VersionPrefix>
+		<Build>$([System.DateTime]::UtcNow.ToString(yyyy))</Build>
+		<Revision>$([System.DateTime]::UtcNow.ToString(dd))</Revision>
+		<FullVersion>$(VersionPrefix).$(Build).$(Revision)</FullVersion>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyVersion>$(FullVersion)</AssemblyVersion>
+		<FileVersion>$(FullVersion)</FileVersion>
+		<Version>$(FullVersion)</Version>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Exceptions\ApiException.cs" />
-	  <Compile Remove="Exceptions\ValidationError.cs" />
-	</ItemGroup>
 
 
   <ItemGroup>
     <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <Target Name="CopyPackage" AfterTargets="Pack">

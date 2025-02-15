@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+	  <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -12,17 +12,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Authors>Angel Sola</Authors>
-    <Company>Tx</Company>
-    <Version>1.0.4.0</Version>
-    <AssemblyVersion>1.0.4.0</AssemblyVersion>
-    <FileVersion>1.0.4.0</FileVersion>
-    <RootNamespace>Tx.Core.Azure.ServiceBus</RootNamespace>
-    <AssemblyName>Tx.Core.Azure.ServiceBus</AssemblyName>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <Description>Azure Service Bus Implementation</Description>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes></PackageReleaseNotes>
+	<Authors>Angel Sola</Authors>
+	<Company>Tx</Company>
+	<Description>Azure Service Bus Implementation</Description>
+	<PackageReleaseNotes>Upgrate to net 9.0</PackageReleaseNotes>
+	<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+	<VersionPrefix>1.1</VersionPrefix>
+	<Build>$([System.DateTime]::UtcNow.ToString(yyyy))</Build>
+	<Revision>$([System.DateTime]::UtcNow.ToString(dd))</Revision>
+	<FullVersion>$(VersionPrefix).$(Build).$(Revision)</FullVersion>
+	<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+	<AssemblyVersion>$(FullVersion)</AssemblyVersion>
+	<FileVersion>$(FullVersion)</FileVersion>
+	<Version>$(FullVersion)</Version>
+	<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	<PackageReleaseNotes></PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
@@ -40,23 +44,32 @@
       <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
       <NugetPath>D:\Nuget\Tx</NugetPath>
     </PropertyGroup>
-    <Copy
-      SourceFiles="$(PackageName)"
-      DestinationFolder="$(NugetPath)"
-    />
-    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high"/>
+    <Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" />
+    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high" />
   </Target>
 
   <Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
     <Exec Command="example.bat" WorkingDirectory="$(publishUrl)" />
   </Target>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
-  </ItemGroup>
 
-  <!--.net5.0 references--><!--
+	<!-- Common package references -->
+	<ItemGroup>
+		<PackageReference Include="Azure.Messaging.ServiceBus" Version="7.18.3" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<!-- Framework-specific package references -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+	</ItemGroup>
+
+	<!-- Framework-specific package references -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+		
+	</ItemGroup>
+
+	<!--.net5.0 references--><!--
   <ItemGroup Condition="'$(TargetFramework)' == 'net5.0' ">
     <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />

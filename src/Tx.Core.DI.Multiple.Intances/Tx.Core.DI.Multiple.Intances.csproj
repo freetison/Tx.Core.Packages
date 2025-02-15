@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<LangVersion>latest</LangVersion>
 		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -15,19 +15,24 @@
 	<PropertyGroup>
 		<Authors>Angel Sola</Authors>
 		<Company>Tx</Company>
-		<Version>1.0.2</Version>
-		<AssemblyVersion>1.0.2</AssemblyVersion>
-		<FileVersion>1.0.2</FileVersion>
-		<RootNamespace>Tx.Core.DI.Multiple.Instance</RootNamespace>
-		<AssemblyName>Tx.Core.DI.Multiple.Intances</AssemblyName>
-		<PackageReleaseNotes>Upgrate to net6.0 </PackageReleaseNotes>
 		<Description>Register and use multiple instance of same class in DI container</Description>
+		<PackageReleaseNotes>Upgrate to net 9.0</PackageReleaseNotes>
+		<RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<VersionPrefix>1.1</VersionPrefix>
+		<Build>$([System.DateTime]::UtcNow.ToString(yyyy))</Build>
+		<Revision>$([System.DateTime]::UtcNow.ToString(dd))</Revision>
+		<FullVersion>$(VersionPrefix).$(Build).$(Revision)</FullVersion>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
+		<AssemblyVersion>$(FullVersion)</AssemblyVersion>
+		<FileVersion>$(FullVersion)</FileVersion>
+		<Version>$(FullVersion)</Version>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>    
+		
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/freetison/Tx.Core.Packages</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>    
 	</PropertyGroup>
 
   
@@ -40,11 +45,8 @@
       <PackageName>$(OutputPath)$(PackageId).$(AssemblyVersion).nupkg</PackageName>
       <NugetPath>D:\Nuget\Tx</NugetPath>
     </PropertyGroup>
-    <Copy
-      SourceFiles="$(PackageName)"
-      DestinationFolder="$(NugetPath)"
-    />
-    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high"/>
+    <Copy SourceFiles="$(PackageName)" DestinationFolder="$(NugetPath)" />
+    <Message Text="Copied $(PackageName) TO $(NugetPath)" Importance="high" />
   </Target>
 
   <Target Name="ExecuteBatAfterPublish" AfterTargets="AfterPublish">
